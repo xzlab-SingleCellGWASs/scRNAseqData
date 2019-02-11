@@ -121,7 +121,7 @@ cell_info <- t(read.table("GSE81547_series_matrix.txt"))
 exp_mat <- matrix(NA, nrow = gene_num, ncol = length(file))
 
 ##############
-###
+###GSE81608
 ##############
 rm(list = ls())
 path <- "/net/mulan/home/yasheng/summAnnot/analysis/single_cell_data/GSE81608_pancreas"
@@ -131,7 +131,7 @@ cell_type <- read.table("GSE81608_celltype.csv", header = T)
 
 
 ##############
-###
+###GSE85908
 ##############
 rm(list = ls())
 exp_mat <- read.csv("GSE85908_expression.csv", header = T)
@@ -151,7 +151,7 @@ exp_mat <- exp_mat[-which(exp_mat[, 2] == ""), ]
 write.csv(exp_mat[, -1], file = "expression_mat.csv", row.names = F, quote = F)
 
 ##############
-###
+###GSE89232
 ##############
 rm(list = ls())
 path <- "/net/mulan/home/yasheng/summAnnot/analysis/single_cell_data/GSE89232_blood"
@@ -161,7 +161,7 @@ exp_mat <- data.frame(fread("GSE89232_expMatrix.txt"))
 write.csv(exp_mat, file = "expression_mat.csv", row.names = F, quote = F)
 
 ##############
-###
+###GSE94820
 ##############
 rm(list = ls())
 path <- "/net/mulan/home/yasheng/summAnnot/analysis/single_cell_data/GSE94820_blood"
@@ -181,7 +181,7 @@ cell_type <- cell_info[order(cell_info[, 1]), 2]
 write.csv(exp_mat, file = "expression_mat.csv", row.names = F, quote = F)
 
 ##############
-###
+###GSE113197
 ##############
 path <- "/net/mulan/home/yasheng/summAnnot/analysis/single_cell_data/GSE113197_breast"
 setwd(path)
@@ -222,7 +222,7 @@ write.csv(cell_type, file = "cell_type.csv", row.names = F, quote = F)
 
 
 ##############
-###
+###GSE74310
 ##############
 path <- "/net/mulan/home/yasheng/summAnnot/analysis/single_cell_data/GSE74310_blood"
 setwd(path)
