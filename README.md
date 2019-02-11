@@ -2,8 +2,8 @@
 # scRNAseqData
 We have dowload 13 single cell RNA sequence (scRNA-seq) datasets from Gene Expression Omnibus (GEO), including blood, nerve, pancrease and so on. All the datasets are collected from the normal, rathre than patients. 
 
-## code
-The code is how we process the raw data.
+## data process
+The code (data_process.R) is the procedure for us to process the datasets.
 
 ## data summary
 | Data | Tissue | cell type |
