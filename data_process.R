@@ -270,3 +270,31 @@ cell_info <- data.frame(cell_info)
 cell_info[, 1] <- factor(cell_info[, 1], levels = sample_info)
 exp_mat2 <- exp_mat1[, c(1, grep("LMPP", colnames(exp_mat1)), grep("mono", colnames(exp_mat1)))]
 write.csv(exp_mat2, file = "expression_mat.csv", row.names = F, quote = F)
+
+###gene intersect
+path <- "/net/mulan/home/yasheng/summAnnot/analysis/single_cell_data/"
+data_summ <- read.table(paste0(path, "data_summ.txt"), header = F, stringsAsFactors = F)[, 1]
+gene <- vector()
+for (i in 1: length(data_summ)){
+  gene_temp <- data.frame(fread(paste0(path, data_summ[i], "/expression_mat.csv")))[, 1]
+  gene_temp <- unique(gene_temp)
+  gene <- c(gene, gene_temp)
+}
+gene_freq <- data.frame(table(gene))
+gene_inter <- gene_freq[gene_freq[, 2] == 16, 1]
+gene_inter <- gene_inter[-1]
+gene_inter <- as.character(gene_inter)
+write.table(gene_inter, file = paste0(path, "inter_gene.txt"), row.names = F, quote = F)
+
+###expression intersect
+path <- "/net/mulan/home/yasheng/summAnnot/analysis/single_cell_data/"
+data_summ <- read.table(paste0(path, "data_summ.txt"), header = F, stringsAsFactors = F)[, 1]
+for (i in 1: length(data_summ)){
+
+  gene_temp <- data.frame(fread(paste0(path, data_summ[i], "/expression_mat.csv")))
+  gene_temp <- gene_temp[gene_temp[, 1] %in% gene_inter, ]
+  print(nrow(gene_temp))
+  write.csv(gene_temp, file = paste0(path, data_summ[i], "/inter_exp_mat.csv"), 
+            row.names = F, quote = F)
+}
+                        
